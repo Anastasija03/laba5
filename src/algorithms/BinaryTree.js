@@ -37,7 +37,7 @@ export default class BinaryTree {
   }
 
   get isLeaf() {
-    return this.children.every((child) => child === undefined);
+    return this.children.every(child => child === undefined);
   }
 
   get grandparent() {
@@ -87,10 +87,10 @@ export default class BinaryTree {
     this.children[opposite] = pivot.children[dir];
     pivot.children[dir] = this;
     pivot.parent = this.parent;
-    pivot.children.forEach((child) => {
+    pivot.children.forEach(child => {
       if (child) child.parent = pivot;
     });
-    this.children.forEach((child) => {
+    this.children.forEach(child => {
       if (child) child.parent = this;
     });
   }
@@ -111,13 +111,13 @@ export default class BinaryTree {
     this.children = replacement.parent.children;
     this.parent = replacement.parent.parent;
 
-    this.children.forEach((child) => {
+    this.children.forEach(child => {
       if (child) child.parent = this;
     });
-    this.children.forEach((child) => {
+    this.children.forEach(child => {
       if (child)
         // point children to replacement
-        child.children.forEach((kid) => {
+        child.children.forEach(kid => {
           if (kid) kid.parent = child;
         });
     });
@@ -150,7 +150,7 @@ export default class BinaryTree {
     let identifiedValue = this.identifier(value);
     let thisValue = this.identifier(this.value);
     if (thisValue === identifiedValue) {
-      return this;
+      return this.value;
     } else {
       let dir;
       if (thisValue < identifiedValue) {
